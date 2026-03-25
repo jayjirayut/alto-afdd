@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, Clock, Cpu } from 'lucide-react';
+import { Search, Clock, Cpu } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer, Tooltip } from 'recharts';
 import SeverityBadge from '../components/common/SeverityBadge';
 import StatusDot from '../components/common/StatusDot';

@@ -1,4 +1,5 @@
-const now = new Date('2026-03-24T09:30:00+07:00');
+import { DEMO_NOW } from '../utils/helpers';
+const now = DEMO_NOW;
 const h = (hours) => new Date(now.getTime() - hours * 3600000).toISOString();
 const d = (days) => new Date(now.getTime() - days * 86400000).toISOString();
 

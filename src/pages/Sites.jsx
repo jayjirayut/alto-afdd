@@ -7,7 +7,7 @@ import StatusDot from '../components/common/StatusDot';
 import { sites, getSiteById } from '../data/sites';
 import { getEquipmentBySite } from '../data/equipment';
 import { getFaultsBySite } from '../data/faults';
-import { getHealthBg, statusConfig, equipmentStatusConfig, formatRelativeTime } from '../utils/helpers';
+import { statusConfig, equipmentStatusConfig, formatRelativeTime } from '../utils/helpers';
 
 export default function Sites() {
   const { siteId } = useParams();

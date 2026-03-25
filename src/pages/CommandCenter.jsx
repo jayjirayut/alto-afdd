@@ -13,14 +13,20 @@ import { equipment, equipmentTypes, equipmentIconMap } from '../data/equipment';
 import { getAllAgents } from '../data/agents';
 import { energyWaste24h, faultRate24h } from '../data/metrics';
 import {
-  severityConfig, agentStatusConfig, formatRelativeTime, getHealthColor, kwhToBaht, formatBaht,
+  severityConfig, agentStatusConfig, formatRelativeTime, getHealthColor, kwhToBaht, formatBaht, DEMO_NOW,
 } from '../utils/helpers';
 
 const SITE_ID = 'central-rama-9';
+const TOOLTIP_STYLE = { fontSize: '10px', borderRadius: '6px', border: '1px solid #e5e7eb' };
+const EFFORT_CFG = {
+  urgent: { label: 'Urgent', bg: 'bg-red-50 text-red-700' },
+  medium: { label: 'Medium', bg: 'bg-amber-50 text-amber-700' },
+  routine: { label: 'Routine', bg: 'bg-gray-100 text-gray-600' },
+};
 
 export default function CommandCenter() {
   const navigate = useNavigate();
-  const [clock, setClock] = useState(new Date('2026-03-24T09:30:00+07:00'));
+  const [clock, setClock] = useState(DEMO_NOW);
 
   useEffect(() => {
     const t = setInterval(() => setClock(prev => new Date(prev.getTime() + 1000)), 1000);
@@ -199,12 +205,7 @@ export default function CommandCenter() {
             </div>
             <div className="space-y-2">
               {punchList.map(item => {
-                const effortCfg = {
-                  urgent: { label: 'Urgent', bg: 'bg-red-50 text-red-700' },
-                  medium: { label: 'Medium', bg: 'bg-amber-50 text-amber-700' },
-                  routine: { label: 'Routine', bg: 'bg-gray-100 text-gray-600' },
-                };
-                const eCfg = effortCfg[item.effort];
+                const eCfg = EFFORT_CFG[item.effort];
                 return (
                   <div key={item.priority} className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer" onClick={() => navigate('/faults')}>
                     <div className="flex items-start gap-2.5">
@@ -293,7 +294,7 @@ export default function CommandCenter() {
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="hour" tick={{ fontSize: 9 }} tickLine={false} axisLine={false} interval={5} />
-                <Tooltip contentStyle={{ fontSize: '10px', borderRadius: '6px', border: '1px solid #e5e7eb' }} />
+                <Tooltip contentStyle={TOOLTIP_STYLE} />
                 <Area type="monotone" dataKey="waste" stroke="#0ea5e9" strokeWidth={1.5} fill="url(#wasteGrad)" />
               </AreaChart>
             </ResponsiveContainer>
@@ -311,7 +312,7 @@ export default function CommandCenter() {
             </div>
             <ResponsiveContainer width="100%" height={50}>
               <LineChart data={faultRate24h}>
-                <Tooltip contentStyle={{ fontSize: '10px', borderRadius: '6px', border: '1px solid #e5e7eb' }} />
+                <Tooltip contentStyle={TOOLTIP_STYLE} />
                 <Line type="monotone" dataKey="detected" stroke="#ef4444" strokeWidth={1.5} dot={false} />
                 <Line type="monotone" dataKey="resolved" stroke="#10b981" strokeWidth={1.5} dot={false} />
               </LineChart>

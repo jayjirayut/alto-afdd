@@ -1,3 +1,5 @@
+export const DEMO_NOW = new Date('2026-03-24T09:30:00+07:00');
+
 export const severityConfig = {
   1: { label: 'Info', color: 'bg-gray-100 text-gray-600', dot: 'bg-gray-400', ring: 'ring-gray-200' },
   2: { label: 'Minor', color: 'bg-blue-50 text-blue-700', dot: 'bg-blue-500', ring: 'ring-blue-200' },
@@ -37,7 +39,7 @@ export const formatDateTime = (isoString) => {
 };
 
 export const formatRelativeTime = (isoString) => {
-  const now = new Date('2026-03-24T09:30:00+07:00');
+  const now = DEMO_NOW;
   const d = new Date(isoString);
   const diffMs = now - d;
   const diffMin = Math.floor(diffMs / 60000);
