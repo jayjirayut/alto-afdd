@@ -124,10 +124,10 @@ export default function CommandCenter() {
       )}
 
       {/* Row 3: Main 3-Column Layout — CSS Grid with fixed right column */}
-      <div className="flex-1 grid grid-cols-[1fr_1fr_320px] gap-3 p-3 min-h-0 overflow-hidden">
+      <div className="flex-1 grid grid-cols-[1fr_1fr_320px] grid-rows-[1fr] gap-3 p-3 min-h-0 overflow-hidden">
 
         {/* Column 1: Site + Equipment Types */}
-        <div className="overflow-y-auto space-y-3 min-h-0">
+        <div className="overflow-y-auto space-y-3 h-0 min-h-full">
           {/* CP9 Compact Hero */}
           <div className="bg-white border border-gray-200 rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
@@ -238,7 +238,7 @@ export default function CommandCenter() {
         </div>
 
         {/* Column 2: Live Fault Feed */}
-        <div className="flex flex-col min-h-0 overflow-hidden">
+        <div className="flex flex-col h-0 min-h-full overflow-hidden">
           <div className="flex items-center justify-between mb-2 shrink-0">
             <h2 className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Live Fault Feed</h2>
             <span className="flex items-center gap-1 text-[10px] text-gray-400">
@@ -273,7 +273,7 @@ export default function CommandCenter() {
         </div>
 
         {/* Column 3: Metrics + Pipeline */}
-        <div className="overflow-y-auto space-y-3 min-h-0">
+        <div className="overflow-y-auto space-y-3 h-0 min-h-full">
           {/* Energy Waste */}
           <div className="bg-white border border-gray-200 rounded-lg p-3">
             <div className="flex items-center justify-between mb-1">
